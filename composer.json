@@ -1,0 +1,21 @@
+{
+    "name": "chenqianhao/category",
+    "description": "category lev php",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "chenqianhao",
+            "email": "68527761@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php":  ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "cqh\\category\\": "src/cqh/category"
+        }
+    }
+}
