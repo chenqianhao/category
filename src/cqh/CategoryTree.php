@@ -73,6 +73,29 @@ class CateGoryTree {
 		return self::$list;
 	}
 
+	private static function array_order($pid) {
+		$config = self::$conf;
+		$field = $config['field'];
+		$data = self::$list;
+		$maxkey = count($data) - 1; //本身的key
+		if ($data[$maxkey - 1][$field['CQH_PARENT_ID']] != $pid) {
+			return;
+		}
+		for ($i = $maxkey; $i >= 0; $i--) {
+			if ($data[$i][$field['CQH_PARENT_ID']] != $pid) {
+				unset(self::$list[$i]);
+				$array_px = array_slice($data, $i + 1, count($data) - 1 - $i);
+				$res = self::array_sort($array_px);
+				foreach ($res as $t) {
+					self::$list[] = $t;
+				}
+
+				break;
+			}
+		}
+
+	}
+
 	/** 递归查询并存入所有子分类
 	 * @param array $data  本次的处理数据
 	 * @param int   $pid   本次查询的父id
@@ -94,11 +117,6 @@ class CateGoryTree {
 			}
 		}
 	}
-
-	/* private  static  function  array_sort($data)
-		    {
-
-	*/
 
 	/** 排序
 	 * @param $data
