@@ -1,10 +1,12 @@
-# 本扩展使用与分类相似是数据进行层级输出排序的数据
+本扩展使用与分类相似是数据进行层级输出排序的数据
 
+## 使用
+* composer require chenqianhao/category
 
 ~~~
 <?php
 
-use \cqh\category\CategoryTree;
+require 'vendor/autoload.php';
 
 $conf=array(
 	    //此数据自己查询
@@ -33,7 +35,7 @@ $conf=array(
         )
 );    
 
-var_dump(CateGoryTree::get_cat_list($config));
+var_dump(\cqh\category\CateGoryTree::get_cat_list($config));
 
 ?>
 ~~~
